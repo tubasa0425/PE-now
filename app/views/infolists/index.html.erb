@@ -1,0 +1,22 @@
+<h1>知識一覧</h1>
+
+ジャンル一覧
+
+新規投稿
+
+人気投稿ランキング
+
+
+
+<div class="new info">
+新着投稿
+
+<% @lists.each do |list| %>
+  <p>タイトル</p>
+  <span>
+    <%= link_to list.title, infolist_path(list.id) %>
+  </span>
+  <p>画像</p>
+  <%= attachment_image_tag list, :image, :fill, 100, 100, format: 'jpeg' %>
+<% end %>
+</div
