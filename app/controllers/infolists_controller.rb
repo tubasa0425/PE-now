@@ -1,45 +1,53 @@
 class InfolistsController < ApplicationController
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :authenticate_user!
+
+
   def new
-    @list = List.new
+    # @list = List.new
+    @infolist = Infolist.new
   end
 
   def create
     # １. データを新規登録するためのインスタンス作成
-    list = List.new(list_params)
+    @infolist = Infolist.new(infolist_params)
     # ２. データをデータベースに保存するためのsaveメソッド実行
-    list.save
+    @infolist.save
     # ３. トップ画面へリダイレクト
-    redirect_to infolist_path(list.id)
+    redirect_to infolists_path(id: current_user)
   end
 
   def index
-    @lists = List.all
+    # @lists = List.all
+    @infolists = Infolist.all
   end
 
   def show
-    @list = List.find(params[:id])
+    # @list = List.find(params[:id])
+    @infolist = Infolist.find(params[:id])
   end
-  
+
   def edit
-    @list = List.find(params[:id])
+    # @list = List.find(params[:id])
+    @infolist = Infolist.find(params[:id])
   end
-  
+
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to infolist_path(list.id)
+    infolist = Infolist.find(params[:id])
+    infolist.update(infolist_params)
+    redirect_to infolist_path(infolist.id)
   end
-  
+
   def destroy
-    list = List.find(params[:id])  # データ（レコード）を1件取得
-    list.destroy  # データ（レコード）を削除
+    infolist = Infolist.find(params[:id])  # データ（レコード）を1件取得
+    infolist.destroy  # データ（レコード）を削除
     redirect_to infolists_path  # 投稿一覧画面へリダイレクト
   end
 
   private
   # ストロングパラメータ
-  def list_params
-    params.require(:list).permit(:title, :body, :image)
+  def infolist_params
+    params.require(:infolist).permit(:title, :body, :image)
   end
 
 end

@@ -1,22 +1,69 @@
 <h1>知識一覧</h1>
 
+
+<div class="row">
+<div class="col-sm-3">
 ジャンル一覧
+</div>
 
+
+<div class="col-sm-6">
+<div class="row">
 新規投稿
-
-人気投稿ランキング
-
-
-
-<div class="new info">
-新着投稿
-
-<% @lists.each do |list| %>
+<% @infolists.each do |infolist| %>
   <p>タイトル</p>
   <span>
-    <%= link_to list.title, infolist_path(list.id) %>
+    <%= link_to infolist.title, infolist_path(infolist.id) %>
   </span>
   <p>画像</p>
-  <%= attachment_image_tag list, :image, :fill, 100, 100, format: 'jpeg' %>
+  <%= attachment_image_tag infolist, :image, :fill, 100, 100, format: 'jpeg' %>
 <% end %>
-</div
+</div>
+</div>
+
+
+<div class="col-sm-3">
+<div class="row">
+人気投稿ランキング
+<% @infolists.each do |infolist| %>
+  <p>タイトル</p>
+  <span>
+    <%= link_to infolist.title, infolist_path(infolist.id) %>
+  </span>
+  <p>画像</p>
+  <%= attachment_image_tag infolist, :image, :fill, 100, 100, format: 'jpeg' %>
+<% end %>
+</div>
+
+
+<div class="row">
+新着投稿
+
+<!--% @lists.each do |list| %>-->
+<!--  <p>タイトル</p>-->
+<!--  <span>-->
+<!--    %= link_to list.title, infolist_path(list.id) %>-->
+<!--  </span>-->
+<!--  <p>画像</p>-->
+<!--  %= attachment_image_tag list, :image, :fill, 100, 100, format: 'jpeg' %>-->
+<!--% end %>-->
+
+<% @infolists.each do |infolist| %>
+  <p>タイトル</p>
+  <span>
+    <%= link_to infolist.title, infolist_path(infolist.id) %>
+  </span>
+  <p>画像</p>
+  <%= attachment_image_tag infolist, :image, :fill, 100, 100, format: 'jpeg' %>
+<% end %>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+
+

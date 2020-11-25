@@ -1,4 +1,4 @@
-class List < ApplicationRecord
+class Infolist < ApplicationRecord
   attachment :image
   belongs_to :user
 end

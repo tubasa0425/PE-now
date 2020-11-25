@@ -1,4 +1,6 @@
 class PostImagesController < ApplicationController
+  
+  
   def new
   end
 

@@ -1,32 +1,34 @@
 <header>
- <nav class="navbar navbar-default" style="background-color: #ffffff; margin-bottom: 0;">
- 
- <h1><%= link_to "知識投稿サイト", root_path, class: "navbar-left navbar-brand font-size-30 box1 margin-bottom-xs" %></h1>
- 
- <div class="collapse navbar-collapse" id="navbar-header">
-<ul class="nav navbar-nav navbar-right">
- <% if user_signed_in? %>
- 
-   <li><%= link_to ' Home', root_path %></li>
-   <li><%= link_to ' マイページ', root_path %></li>
+<nav class="navbar navbar-default" style="background-color: #ffffff; margin-bottom: 0;">
+
+
+<div class="container">
+
+<div class="row">
+  <h1><%= link_to "KnowledgEasy", root_path, class: "navbar-brand-center box1 margin-bottom" %></h1>
+<strong>知識(Knowledge)</strong>を<strong>手軽(Easy)に</strong>投稿しよう！
+</div>
+
+
+<div class="row" id="navbar-header">
+  <ul class="nav navbar">
+  <% if user_signed_in? %>
+   <li><%= link_to ' Home', infolists_path %></li>
+   <li><%= link_to ' マイページ', user_path(current_user.id) %></li>
    <li><%= link_to ' Q&A', qa_path %></li>
    <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
    <li><%= link_to '新規投稿', "/infolists/new" %></li>
- 
- <% else %>
- 
+  <% else %>
    <li><%= link_to ' Home', root_path %></li>
    <li><%= link_to ' Q&A', qa_path %></li>
-   <li><%= link_to ' About', about_path %></li>
+   <!--<li>%= link_to ' About', about_path %></li>-->
    <li><%= link_to ' 新規登録', new_user_registration_path %></li>
    <li><%= link_to ' ログイン', new_user_session_path %></li>
- 
- <% end %>
- </ul>
+  <% end %>
+  </ul>
  </div>
- 
+
  </nav>
  </header>
- 
- 
- 
+
+

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  resources :infolists
-  resources :post_images, only: [:new, :create, :index, :show]
-  
-  # get 'infolists/new'
-  # root 'homes#top'
-  root 'infolists#index'
+
+  resources :infolists, only: [:index, :show, :edit, :create, :destroy, :update, :new]
+  resources :users, only: [:index, :show, :edit, :update]
+
+  get 'infolists/new'
+  root 'homes#top'
+  # root 'infolists#index'
   get "/about" => "homes#about", as: "about"
   get "/qa" => "homes#qa", as: "qa"
   # get 'infolists' => 'infolists#index'
