@@ -13,17 +13,17 @@
 <div class="row" id="navbar-header">
   <ul class="nav navbar">
   <% if user_signed_in? %>
-   <li><%= link_to ' Home', infolists_path %></li>
-   <li><%= link_to ' マイページ', user_path(current_user.id) %></li>
-   <li><%= link_to ' Q&A', qa_path %></li>
-   <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
-   <li><%= link_to '新規投稿', "/infolists/new" %></li>
+   <div class="inline-block_test"><%= link_to ' Home', infolists_path %></div>
+   <div class="inline-block_test"><%= link_to ' マイページ', user_path(current_user.id) %></div>
+   <div class="inline-block_test"><%= link_to ' Q&A', qa_path %></div>
+   <div class="inline-block_test"><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></div>
+   <div class="inline-block_test"><%= link_to '新規投稿', "/infolists/new" %></div>
   <% else %>
-   <li><%= link_to ' Home', root_path %></li>
-   <li><%= link_to ' Q&A', qa_path %></li>
+   <div class="inline-block_test"><%= link_to ' Home', root_path %></div>
+   <div class="inline-block_test"><%= link_to ' Q&A', qa_path %></div>
    <!--<li>%= link_to ' About', about_path %></li>-->
-   <li><%= link_to ' 新規登録', new_user_registration_path %></li>
-   <li><%= link_to ' ログイン', new_user_session_path %></li>
+   <div class="inline-block_test"><%= link_to ' 新規登録', new_user_registration_path %></div>
+   <div class="inline-block_test"><%= link_to ' ログイン', new_user_session_path %></div>
   <% end %>
   </ul>
  </div>
