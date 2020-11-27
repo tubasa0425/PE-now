@@ -6,6 +6,12 @@
 
 <div class="row">
   <h1><%= link_to "KnowledgEasy", root_path, class: "navbar-brand-center box1 margin-bottom" %></h1>
+
+  <% if user_signed_in? %>
+  <h4 class="welcome-message">へようこそ、<%= current_user.name %>さん！</h4>
+  <% else %>
+   <% end %>
+
 <strong>知識(Knowledge)</strong>を<strong>手軽(Easy)に</strong>投稿しよう！
 </div>
 
@@ -13,7 +19,7 @@
 <div class="row" id="navbar-header">
   <ul class="nav navbar">
   <% if user_signed_in? %>
-   <div class="inline-block_test"><%= link_to ' Home', infolists_path %></div>
+   <div class="inline-block_test"><%= link_to ' 投稿一覧', infolists_path %></div>
    <div class="inline-block_test"><%= link_to ' マイページ', user_path(current_user.id) %></div>
    <div class="inline-block_test"><%= link_to ' Q&A', qa_path %></div>
    <div class="inline-block_test"><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></div>
@@ -21,7 +27,6 @@
   <% else %>
    <div class="inline-block_test"><%= link_to ' Home', root_path %></div>
    <div class="inline-block_test"><%= link_to ' Q&A', qa_path %></div>
-   <!--<li>%= link_to ' About', about_path %></li>-->
    <div class="inline-block_test"><%= link_to ' 新規登録', new_user_registration_path %></div>
    <div class="inline-block_test"><%= link_to ' ログイン', new_user_session_path %></div>
   <% end %>

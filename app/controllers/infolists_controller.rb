@@ -1,6 +1,6 @@
 class InfolistsController < ApplicationController
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
 
   def new
@@ -20,7 +20,7 @@ class InfolistsController < ApplicationController
     @infolist = Infolist.new(infolist_params)
     @infolist.user_id = current_user.id
     if @infolist.save
-      redirect_to infolist_path(@infolist), notice: "You have created book successfully."
+      redirect_to infolist_path(@infolist), notice: "投稿しました！"
     else
       @infolists = Infolist.all
       render 'index'
@@ -52,7 +52,7 @@ class InfolistsController < ApplicationController
   def update
     @infolist = Infolist.find params[:id]
     if @infolist.update(infolist_params)
-      redirect_to infolist_path(@infolist), notice: "You have updated  successfully."
+      redirect_to infolist_path(@infolist), notice: "更新しました！"
     else
       render "edit"
     end

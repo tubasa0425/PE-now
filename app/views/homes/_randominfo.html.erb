@@ -8,7 +8,7 @@
   <thead>
    <tr>
      <th>
-      <%= attachment_image_tag infolist, :image, :fill, 150, 150, format: 'jpeg' %>
+      <%= attachment_image_tag infolist, :image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size:'150x150' %>
      </th>
    </tr>
   </thead>

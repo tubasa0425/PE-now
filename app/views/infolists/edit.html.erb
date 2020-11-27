@@ -1,31 +1,38 @@
-<!--<h1>編集画面</h1>-->
-<!--%= form_with model:@infolist, url:"/infolists/#{@infolist.id}", local:true do |f| %>-->
-<!--  <h4>タイトル</h4>-->
-<!--  %= f.text_field :title %>-->
-<!--  <h4>本文</h4>-->
-<!--  %= f.text_area :body %>-->
-<!--  %= link_to "削除", destroy_infolist_path(@infolist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
-<!--  %= f.submit '保存' %>-->
-<!--% end %>-->
+<h3>投稿編集</h3>
 
 
-<div class='row'>
-		<h1>編集</h1>
-		<%= form_with model:@infolist,local:true do |f| %>
-  <div class="field row">
-    <%= f.label :title, "タイトル" %>
-    <%= f.text_field :title %>
-  </div>
 
-  <div class="row">
-    <%= f.label :boby, "本文" %>
-    <%= f.text_area :body%>
-  </div>
+
+<div class="col-sm-12">
   
+	<%= form_with model:@infolist,local:true do |f| %>
+
+
+<div class="col-sm-6">
+<br></br>
+<%= attachment_image_tag @infolist, :image, :fill, 400, 400, format: 'jpeg' %>
   <div class="row">
-    <%= f.label :image, "画像" %>
+    <!--%= f.label :image, "画像" %>-->
+    <br></br>
     <%= f.attachment_field :image %>
   </div>
+</div>
+
+
+<div class="col-sm-6">
+	<br></br>
+	
+  <div class="row">
+    <%= f.label :title, "投稿タイトル(20字まで)" %>
+    <%= f.text_field :title, placeholder:"投稿タイトル" %>
+  </div>
+
+  <div class="row">
+    <%= f.label :boby, "投稿本文(140字まで)" %>
+    <%= f.text_area :body, placeholder:"投稿本文"%>
+  </div>
+  
+
 
   <div class="row">
     <%= link_to "削除", destroy_infolist_path(@infolist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
@@ -35,4 +42,8 @@
 
 		<%= link_to '投稿詳細', infolist_path(@infolist), class: "infolist_#{@infolist.id}" %> |
 		<%= link_to '戻る', infolist_path, class: "back" %>
-    </div>
+ </div>
+    
+    
+    
+</div>
