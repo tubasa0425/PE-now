@@ -1,11 +1,54 @@
-<!--<br>-->
-<!--<div class="col-sm-3">-->
-<!--ジャンル一覧-->
-<!--</div>-->
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+
 
 <br>
+<div class="col-sm-4">
+いいねランキング TOP5<br></br>
 
-<div class="col-sm-12">
+<table class='table table-condensed table-bordered'>
+<thead>
+<tr>
+<th class="center col-sm-1"></th>
+<th class="center col-sm-1"></th>
+<th class="center col-sm-4">投稿タイトル</th>
+<th class="center col-sm-3">投稿者</th>
+<!--<th class="center col-sm-6">投稿本文</th>-->
+<th class="center col-sm-3"></th>
+
+
+</tr>
+</thead>
+
+<tbody>
+<% @all_ranks.each.with_index(1) do |infolist, i| %>
+<tr>
+<td><%= i %>位</td>
+<td>
+<%= link_to user_path(infolist.user) do %>
+<%= attachment_image_tag infolist, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size:'60x60' %>
+<% end %>
+</td>
+<td>『<%= link_to infolist.title, infolist_path(infolist.id) %>』</td>
+<td><b><%= link_to infolist.user.name, user_path(infolist.user) %></b>&nbsp;さん</td>
+<!--<td>%= infolist.body %></td>-->
+<td>
+  <%= infolist.likes.count %>
+  <p>いいね</p>
+  </td>
+</tr>
+<% end %>
+</div>
+</div>
+</tbody>
+</table>
+
+</div>
+
+
+
+<div class="col-sm-8">
 <div class="row">
 新規投稿<br></br>
 
@@ -16,49 +59,17 @@
 <th class="center col-sm-1"></th>
 <th class="center col-sm-2">投稿タイトル</th>
 <th class="center col-sm-2">投稿者</th>
-<th class="center col-sm-7">投稿本文</th>
-
-</tr>
-</thead>
-
-
-
-<tbody>
-<% @infolists.each do |infolist| %>
-<tr>
-
-<td>
-<%= link_to user_path(infolist.user) do %>
-<%= attachment_image_tag infolist, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size:'60x60' %>
-<% end %>
-</td>
-<td>『<%= link_to infolist.title, infolist_path(infolist.id) %>』</td>
-<td><b><%= link_to infolist.user.name, user_path(infolist.user) %></b>&nbsp;さん</td>
-<td><%= infolist.body %></td>
-</tr>
-<% end %>
-</div>
-</div>
-</tbody>
-</table>
-
-
-人気ランキング<br></br>
-
-<table class='table table-condensed table-bordered'>
-<thead>
-<tr>
+<th class="center col-sm-6">投稿本文</th>
 <th class="center col-sm-1"></th>
-<th class="center col-sm-2">投稿タイトル</th>
-<th class="center col-sm-2">投稿者</th>
-<th class="center col-sm-7">投稿本文</th>
-
 </tr>
 </thead>
+
+
 
 <tbody>
 <% @infolists.each do |infolist| %>
 <tr>
+
 <td>
 <%= link_to user_path(infolist.user) do %>
 <%= attachment_image_tag infolist, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size:'60x60' %>
@@ -67,6 +78,10 @@
 <td>『<%= link_to infolist.title, infolist_path(infolist.id) %>』</td>
 <td><b><%= link_to infolist.user.name, user_path(infolist.user) %></b>&nbsp;さん</td>
 <td><%= infolist.body %></td>
+<td>
+  <%= infolist.likes.count %>
+  <p>いいね</p>
+</td>
 </tr>
 <% end %>
 </div>
@@ -75,10 +90,13 @@
 </table>
 
 
+
+
 </div>
 </div>
 
 
+</div>
 </div>
 </div>
 

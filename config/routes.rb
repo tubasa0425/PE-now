@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :infolists, only: [:index, :show, :edit, :create, :destroy, :update, :new]
+  resources :infolists, only: [:index, :show, :edit, :create, :destroy, :update, :new] do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :users, only: [:index, :show, :edit, :update]
+
 
   get 'infolists/new'
   root 'homes#top'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_072329) do
+ActiveRecord::Schema.define(version: 2020_11_27_083400) do
 
   create_table "infolists", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2020_11_25_072329) do
     t.text "body"
     t.integer "user_id"
     t.string "image_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "infolist_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["infolist_id"], name: "index_likes_on_infolist_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "lists", force: :cascade do |t|

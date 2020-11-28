@@ -1,0 +1,26 @@
+<table class='table table-condensed table-bordered'>
+<thead>
+
+<tr>
+<th class="center col-sm-4">投稿タイトル</th>
+<th class="center col-sm-2">投稿者</th>
+<th class="center col-sm-6">投稿本文</th>
+</tr>
+</thead>
+
+
+
+<tbody>
+<% @user.liked_infolists.each do |post| %>
+<tr>
+
+<td>『<%= post.title %>』</td>
+<td><b><%= post.user.name %></b>&nbsp;さん</td>
+<td><%= post.body %></td>
+
+</tr>
+<% end %>
+</div>
+</div>
+</tbody>
+</table>

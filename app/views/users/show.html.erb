@@ -49,8 +49,21 @@
              <%= link_to " パスワードを変更する", edit_user_registration_path %>
      <% end %>
 
-<br></br>
-いいねした投稿
+<br>
+
+<h3>いいねしている投稿</h3>
+
+
+<%= render 'infolists/like', infolists: @infolists %>
+
+
+
+
+
+
+
+
+
 
 
 

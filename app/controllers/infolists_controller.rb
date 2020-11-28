@@ -31,11 +31,13 @@ class InfolistsController < ApplicationController
     # @lists = List.all
     @infolists = Infolist.all
     @infolist = Infolist.new
+    @all_ranks = Infolist.find(Like.group(:infolist_id).order('count(infolist_id) desc').limit(5).pluck(:infolist_id))
   end
 
   def show
     # @list = List.find(params[:id])
     @infolist = Infolist.find(params[:id])
+    @like = Like.new
   end
 
   def edit
@@ -43,11 +45,7 @@ class InfolistsController < ApplicationController
     @infolist = Infolist.find(params[:id])
   end
 
-  # def update
-  #   infolist = Infolist.find(params[:id])
-  #   infolist.update(infolist_params)
-  #   redirect_to infolist_path(infolist.id)
-  # end
+
 
   def update
     @infolist = Infolist.find params[:id]

@@ -2,6 +2,13 @@
 <br></br>
 <%= attachment_image_tag @infolist, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg", size:'400x400' %>
 
+<div class="row">
+<% if @infolist.user == current_user %>
+<%= link_to "編集", edit_infolist_path(@infolist.id) %>
+<%= link_to "削除", destroy_infolist_path(@infolist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
+</div>
+
 </div>
 
 
@@ -9,27 +16,40 @@
 <br></br>
 
 <div class="row">
-<h2>タイトル</h2>
-<p><%= @infolist.title %></p>
+<h2>タイトル: <b><%= @infolist.title %></b></h2>
 </div>
 
-
-いいね
-
-<div class="row">
-<h2>本文</h2>
-<p><%= @infolist.body %></p>
-</div>
 
 
 <div class="row">
-<h2>コメント</h2>
-<p></p>
+<h3><%= @infolist.body %></h3>
 </div>
 
 
-<% if @infolist.user == current_user %>
-<%= link_to "編集", edit_infolist_path(@infolist.id) %>
-<%= link_to "削除", destroy_infolist_path(@infolist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+</div>
+
+
+
+<% if current_user.already_liked?(@infolist) %>
+<li>
+  <%= link_to infolist_likes_path(@infolist), method: :delete do %>
+    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= @infolist.likes.count %> いいね
+  <% end %>
+</li>
+<% else %>
+<li>
+  <%= link_to infolist_likes_path(@infolist), method: :post do %>
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+    <%= @infolist.likes.count %> いいね
+  <% end %>
+</li>
 <% end %>
-</div>
+
+<h2>いいねしたユーザー</h2>
+<% @infolist.liked_users.each do |user| %>
+<p><b><%= link_to @infolist.user.name, user_path(@infolist.user) %></b>&nbsp;さん</p>
+<% end %>
+
+
