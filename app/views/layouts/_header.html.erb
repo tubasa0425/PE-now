@@ -1,17 +1,13 @@
 <header>
+ 
 <nav class="navbar navbar-default" style="; margin-bottom: 0;">
-
-
 <div class="container">
-
 <div class="row">
   <%= link_to image_tag("logo.jpg"),root_path %>
-
   <% if user_signed_in? %>
   <h5 class="welcome-message">へようこそ、<%= current_user.name %>さん！</h5>
   <% else %>
-   <% end %>
-
+  <% end %>
 <strong>知識(Knowledge)</strong>を<strong>手軽(Easy)に</strong>投稿しよう！
 </div>
 
@@ -34,6 +30,7 @@
  </div>
 
  </nav>
+ 
  </header>
 
 

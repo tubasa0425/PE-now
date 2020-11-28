@@ -3,7 +3,11 @@ class HomesController < ApplicationController
   def top
     @infolists = Infolist.all
     @infolist = Infolist.new
-    @random = Infolist.order("RANDOM()").limit(5)
+    if Rails.env.development?
+      @random = Infolist.order("RANDOM()").limit(5)
+    else
+      @random = Infolist.order("RAND()").limit(5)
+    end
 
 
   end
