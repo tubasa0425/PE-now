@@ -1,5 +1,5 @@
 class RenamePostIdColumnToLikes < ActiveRecord::Migration[5.2]
   def change
-    rename_column :likes, :post_id, :infolist_id
+    add_column :likes, :infolist_id, :integer
   end
 end
