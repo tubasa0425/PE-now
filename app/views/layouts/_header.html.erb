@@ -1,14 +1,14 @@
 <header>
-<nav class="navbar navbar-default" style="background-color: #ffffff; margin-bottom: 0;">
+<nav class="navbar navbar-default" style="; margin-bottom: 0;">
 
 
 <div class="container">
 
 <div class="row">
-  <h1><%= link_to "KnowledgEasy", root_path, class: "navbar-brand-center box1 margin-bottom" %></h1>
+  <%= link_to image_tag("logo.jpg"),root_path %>
 
   <% if user_signed_in? %>
-  <h4 class="welcome-message">へようこそ、<%= current_user.name %>さん！</h4>
+  <h5 class="welcome-message">へようこそ、<%= current_user.name %>さん！</h5>
   <% else %>
    <% end %>
 

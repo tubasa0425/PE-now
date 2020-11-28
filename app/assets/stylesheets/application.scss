@@ -23,3 +23,24 @@
     height: 50px;              /* 高さ指定 */
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+
+  /* フッタの高さと等しいネガティブマージン */
+  /* また最後の子要素の潜在的なマージンとしても機能 */
+  margin-bottom: -50px;
+}
+.footer ,
+.push {
+  height: 50px;
+
+}
+
+.navbar {
+  background-color:#fff0f5;
+}
+

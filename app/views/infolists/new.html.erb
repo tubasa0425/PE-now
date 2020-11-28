@@ -1,11 +1,8 @@
 <h1>新規投稿</h1>
 
 <%= form_with model: @infolist, url:'/infolists', local:true do |f| %>
-  <h4>投稿タイトル(20字まで)</h4>
-  <%= f.text_field :title, placeholder:"投稿タイトル" %>
-  <h4>投稿本文(140字まで)</h4>
-  <%= f.text_area :body, placeholder:"投稿本文" %>
-  <h4>画像</h4>
-  <%= f.attachment_field :image %>
-  <%= f.submit '投稿' %>
+  <h4>投稿タイトル(20字まで)</h4><%= f.text_field :title, placeholder:"投稿タイトル", class: "center-block" %>
+  <h4>投稿本文(140字まで)</h4><%= f.text_area :body, placeholder:"投稿本文" %>
+  <h4>画像</h4><%= f.attachment_field :image, class: "button_custom  center-block" %>
+  <%= f.submit '投稿', class: "button_custom btn btn-success center-block" %>
 <% end %>
