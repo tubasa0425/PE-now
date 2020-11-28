@@ -4,8 +4,9 @@
 
 <div class="row">
 <% if @infolist.user == current_user %>
-<%= link_to "編集", edit_infolist_path(@infolist.id) %>
-<%= link_to "削除", destroy_infolist_path(@infolist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<br>
+<%= link_to "編集", edit_infolist_path(@infolist.id), class: "button_custom btn btn-success center-block col-sm-6" %>
+<%= link_to "削除", destroy_infolist_path(@infolist.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "button_custom btn btn-danger center-block" %>
 <% end %>
 </div>
 
@@ -16,13 +17,17 @@
 <br></br>
 
 <div class="row">
-<h2>タイトル: <b><%= @infolist.title %></b></h2>
+<h3>投稿タイトル <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h3>
+<h2>『<%= @infolist.title %>』</h2>
 </div>
 
 
 
 <div class="row">
-<h3><%= @infolist.body %></h3>
+  <h3>投稿本文 <span class="glyphicon glyphicon-book" aria-hidden="true"></span></h3>
+<div style="background-color:#fff8dc;" class="rounded center-block col-sm-12">
+<h4><%= @infolist.body %></h4>
+</div>
 </div>
 
 
@@ -32,24 +37,25 @@
 
 
 <% if current_user.already_liked?(@infolist) %>
-<div>
+<h3><div>
   <%= link_to infolist_likes_path(@infolist.id), method: :delete do %>
     <p class="fa fa-heart" aria-hidden="true" style="color: red;"></p>
-    <%= @infolist.likes.count %> いいね
+    <%= @infolist.likes.count %> いいね <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
   <% end %>
-</div>
+</div></h3>
 <% else %>
-<div>
+<h3><div>
   <%= link_to infolist_likes_path(@infolist), method: :post do %>
     <p class="fa fa-heart-o" aria-hidden="true"></p>
     <%= @infolist.likes.count %> いいね
-  <% end %>
+  <% end %><span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
 </div>
+この投稿が気に入ったらクリック!<br></h3>
 <% end %>
 
-<h2>いいねしたユーザー</h2>
+<h3>いいね <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>したユーザー</h3>
 <% @infolist.liked_users.each do |user| %>
-<p><b><%= link_to @infolist.user.name, user_path(@infolist.user) %></b>&nbsp;さん</p>
+<p><b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= link_to @infolist.user.name, user_path(@infolist.user) %></b>&nbsp;さん</p>
 <% end %>
 
 

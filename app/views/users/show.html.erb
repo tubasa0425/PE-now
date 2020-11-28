@@ -1,7 +1,7 @@
 
-<h3 class=""><span>&emsp;投稿者&emsp;</span></h3>
+<h3 class=""><span>&emsp;投稿者 </span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
 <% if @user.id == current_user.id %>
-【マイページ】
+<h4>【マイページ】</h4>
 <% end %>
 
 <div class="container">
@@ -11,9 +11,7 @@
 <div class="col-sm-6">
 
 
-<b>登録情報</b>
-<br></br>
-
+<h3><b>登録情報 <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></b></h3>
 <table class="table table-bordered table-condensed" >
         <tbody>
           <tr class="row">
@@ -51,7 +49,7 @@
 
 <br>
 
-<h3>いいねしている投稿</h3>
+<h3>いいね <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>している投稿</h3>
 
 
 <%= render 'infolists/like', infolists: @infolists %>
@@ -59,8 +57,7 @@
 </div>
 
 <div class="col-sm-6">
-<b>投稿一覧</b>
-<br></br>
+<h3><b>投稿一覧 <span class="glyphicon glyphicon-list" aria-hidden="true"></span></b></h3>
 <%= render 'infolists/infolists', infolists: @infolists %>
 
 

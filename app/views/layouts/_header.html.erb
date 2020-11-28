@@ -1,14 +1,14 @@
 <header>
- 
+
 <nav class="navbar navbar-default" style="; margin-bottom: 0;">
 <div class="container">
 <div class="row">
   <%= link_to image_tag("logo.jpg"),root_path %>
   <% if user_signed_in? %>
-  <h5 class="welcome-message">へようこそ、<%= current_user.name %>さん！</h5>
+  <h5 class="welcome-message">へ、ようこそ <b><%= current_user.name %></b>さん！</h5>
   <% else %>
   <% end %>
-<strong>知識(Knowledge)</strong>を<strong>手軽(Easy)に</strong>投稿しよう！
+<h5><strong>知識(Knowledge)</strong>を<strong>手軽(Easy)に</strong>投稿しよう！</h5>
 </div>
 
 
@@ -17,12 +17,12 @@
   <% if user_signed_in? %>
    <div class="inline-block_test"><%= link_to ' 投稿一覧', infolists_path %></div>
    <div class="inline-block_test"><%= link_to ' マイページ', user_path(current_user.id) %></div>
-   <div class="inline-block_test"><%= link_to ' Q&A', qa_path %></div>
+   <!--<div class="inline-block_test">%= link_to ' Q&A', qa_path %></div>-->
    <div class="inline-block_test"><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></div>
    <div class="inline-block_test"><%= link_to '新規投稿', "/infolists/new" %></div>
   <% else %>
    <div class="inline-block_test"><%= link_to ' Home', root_path %></div>
-   <div class="inline-block_test"><%= link_to ' Q&A', qa_path %></div>
+   <!--<div class="inline-block_test">%= link_to ' Q&A', qa_path %></div>-->
    <div class="inline-block_test"><%= link_to ' 新規登録', new_user_registration_path %></div>
    <div class="inline-block_test"><%= link_to ' ログイン', new_user_session_path %></div>
   <% end %>
@@ -30,7 +30,7 @@
  </div>
 
  </nav>
- 
+
  </header>
 
 
