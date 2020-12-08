@@ -2,6 +2,11 @@
 <br></br>
 <%= attachment_image_tag @infolist, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg", size:'400x400' %>
 
+<h4>本文分析スコア[<%= @infolist.score %>]</h4>
+<% @infolist.tags.each do |tag| %>
+  <span class="label"><%= tag.name %></span>
+<% end %>
+
 <div class="row">
 <% if @infolist.user == current_user %>
 <br>
@@ -57,5 +62,3 @@
 <% @infolist.liked_users.each do |user| %>
 <p><b><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= link_to @infolist.user.name, user_path(@infolist.user) %></b>&nbsp;さん</p>
 <% end %>
-
-

@@ -19,12 +19,22 @@ class InfolistsController < ApplicationController
   def create
     @infolist = Infolist.new(infolist_params)
     @infolist.user_id = current_user.id
+    @infolist.score = Language.get_data(infolist_params[:body])  #この行を追加 上から実行（保存する前に実行）
+
+
     if @infolist.save
+
+    tags = Vision.get_image_data(@infolist.image)
+    tags.each do |tag|
+      @infolist.tags.create(name: tag)
+    end
+    
       redirect_to infolist_path(@infolist), notice: "投稿しました！"
     else
       @infolists = Infolist.all
       render 'index'
     end
+    
   end
 
   def index

@@ -1,4 +1,5 @@
 class Infolist < ApplicationRecord
+  has_many :tags, dependent: :destroy
   attachment :image
   belongs_to :user
   validates :title, presence: true, length: { maximum: 20 }

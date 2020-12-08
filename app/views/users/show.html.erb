@@ -1,69 +1,79 @@
+<h3 class="">
+    <span>&emsp;投稿者 </span><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+</h3>
 
-<h3 class=""><span>&emsp;投稿者 </span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
-<% if @user.id == current_user.id %>
-<h4>【マイページ】</h4>
+
+<!--ユーザーログイン時のみ表示-->
+<% if @user.id == current_user.id %>　
+    <h4>【マイページ】</h4>
 <% end %>
 
+
 <div class="container">
-<div class="row">
-<div class="col-sm-12">
-
+  <div class="row">
+    <div class="col-sm-12">
+  
+  
 <div class="col-sm-6">
+  
+    <h3>
+      <b>登録情報 <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></b>
+    </h3>
 
-
-<h3><b>登録情報 <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></b></h3>
+    
 <table class="table table-bordered table-condensed" >
-        <tbody>
-          <tr class="row">
-            <td class="colored col-sm-3">ニックネーム</td>
-            <td class="col-sm-9"><%= @user.name %></td>
-          </tr>
-          <tr class="row">
+  <tbody>
+
+  <tr class="row">
+    <td class="colored col-sm-3">ニックネーム</td>
+    <td class="col-sm-9"><%= @user.name %></td>
+  </tr>
+
+  <tr class="row">
+  <% if @user.id == current_user.id %>
+  <tr class="row">
+    <td class="colored col-sm-3">ニックネーム変更</td>
+    <td class="col-sm-9">
+    <%= form_with model:@user, local:true do |f| %>
+    <%= f.text_field :name, autofocus: true, id:"inputEmail", placeholder:"新しいニックネーム"%><%= f.submit "変更" %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr class="row">
+    <td class="colored col-sm-3">メールアドレス</td>
+    <td class="col-sm-9"><%= @user.email %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
 <% if @user.id == current_user.id %>
-
-          <tr class="row">
-            <td class="colored col-sm-3">ニックネーム変更</td>
-            <td class="col-sm-9">
-              <%= form_with model:@user, local:true do |f| %>
-　　　　　　　<%= f.text_field :name, autofocus: true, id:"inputEmail", placeholder:"新しいニックネーム"%><%= f.submit "変更" %>
-　　　　　　　<% end %>
-            </td>
-          </tr>
-
-
-          <tr class="row">
-            <td class="colored col-sm-3">メールアドレス</td>
-            <td class="col-sm-9"><%= @user.email %></td>
-          </tr>
-
-
-
-          <% end %>
-        </tbody>
-      </table>
-
-
-     <% if @user.id == current_user.id %>
-             <%= link_to " パスワードを変更する", edit_user_registration_path %>
-     <% end %>
+  <%= link_to " パスワードを変更する", edit_user_registration_path %>
+<% end %>
 
 <br>
 
-<h3>いいね <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>している投稿</h3>
-
+<h3>
+  いいね <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>している投稿
+</h3>
 
 <%= render 'infolists/like', infolists: @infolists %>
 
 </div>
 
 <div class="col-sm-6">
-<h3><b>投稿一覧 <span class="glyphicon glyphicon-list" aria-hidden="true"></span></b></h3>
+<h3>
+  <b>投稿一覧 <span class="glyphicon glyphicon-list" aria-hidden="true"></span></b>
+</h3>
+
 <%= render 'infolists/infolists', infolists: @infolists %>
 
+</div>
 
 
 
-</div>
-</div>
-</div>
+    </div>
+  </div>
 </div>

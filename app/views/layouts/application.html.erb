@@ -1,42 +1,42 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <title>KnowledgEasy</title>
+    
+<head>
+<title>KnowledgEasy</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-    <div class="wrapper">
-
-
+<body>
+    
+<div class="wrapper">
     <div class="text-center">
-
-     <%= render 'layouts/header' %>
-     </div>
-     <div class="text-center">
-
-    <%= yield %>
+        <%= render 'layouts/header' %>
     </div>
-
+    
+    <div class="text-center">
+        <%= yield %>
+    </div>
+    
     <%= render 'layouts/footer' %>
-        <div class="push"></div>
-  </div>
 
-  <div class="text-center">
+    <div class="push"></div>
 
+</div>
 
-  <footer class="footer">
+<div class="text-center">
+<footer class="footer">
 <dov class="fc_1">
-    <nav class="navbar" style="margin-bottom: 0; ">
-    <div>© <a href="https://www.designevo.com/jp/logo-maker/" title="無料オンラインロゴメーカー">DesignEvo</a> logo maker</div>
-
+<nav class="navbar" style="margin-bottom: 0; ">
+<div>© <a href="https://www.designevo.com/jp/logo-maker/" title="無料オンラインロゴメーカー">DesignEvo</a> logo maker</div>
 </dov>
-  </footer>
-   </div>
-  </nav>
-  </body>
+</footer>
+</div>
+</nav>
+
+</body>
+
 </html>
